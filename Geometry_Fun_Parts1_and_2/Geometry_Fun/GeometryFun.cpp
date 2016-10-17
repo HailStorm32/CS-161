@@ -1,7 +1,7 @@
 /*
-Program Name: Geometry_Fun
+Program Name: Geometry_Fun part2
 Author:	Demetri Van Sickle
-Date: 10/10/16
+Date: 10/17/16
 IDE: Visual Studio 2015 Enterprise 
 Description: Using a positive value it was given, the code will use that value to spit out the area and perimeter of a square, and radius, perimeter, and area of a circle. 
 */
