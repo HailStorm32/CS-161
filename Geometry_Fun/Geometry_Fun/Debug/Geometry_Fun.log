@@ -1,4 +1,0 @@
-﻿  GeometryFun.cpp
-c:\users\demet\documents\github\cs-161\geometry_fun\geometry_fun\geometryfun.cpp(12): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Geometry_Fun.vcxproj -> C:\Users\demet\Documents\GitHub\CS-161\Geometry_Fun\Debug\Geometry_Fun.exe
-  Geometry_Fun.vcxproj -> C:\Users\demet\Documents\GitHub\CS-161\Geometry_Fun\Debug\Geometry_Fun.pdb (Full PDB)
