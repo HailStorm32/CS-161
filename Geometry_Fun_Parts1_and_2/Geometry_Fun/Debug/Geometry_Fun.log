@@ -1,4 +1,5 @@
 ﻿  GeometryFun.cpp
-d:\demetri van sickle\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(12): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Geometry_Fun.vcxproj -> D:\Demetri Van Sickle\Documents\GitHub\CS-161\Geometry_Fun_Parts1_and_2\Debug\Geometry_Fun.exe
-  Geometry_Fun.vcxproj -> D:\Demetri Van Sickle\Documents\GitHub\CS-161\Geometry_Fun_Parts1_and_2\Debug\Geometry_Fun.pdb (Full PDB)
+c:\users\demet\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(12): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\demet\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(77): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Geometry_Fun.vcxproj -> C:\Users\demet\Documents\GitHub\CS-161\Geometry_Fun_Parts1_and_2\Debug\Geometry_Fun.exe
+  Geometry_Fun.vcxproj -> C:\Users\demet\Documents\GitHub\CS-161\Geometry_Fun_Parts1_and_2\Debug\Geometry_Fun.pdb (Full PDB)

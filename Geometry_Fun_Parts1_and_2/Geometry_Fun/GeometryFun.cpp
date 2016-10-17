@@ -3,7 +3,7 @@ Program Name: Geometry_Fun part2
 Author:	Demetri Van Sickle
 Date: 10/17/16
 IDE: Visual Studio 2015 Enterprise 
-Description: Using a positive value it was given, the code will use that value to spit out the area and perimeter of a square, and radius, perimeter, and area of a circle. 
+Description: Using a positive value it was given, the code will use that value to spit out the area and perimeter of a square and equilateral triangle, and radius, perimeter, and area of a circle. 
 */
 
 #include <iostream>
@@ -20,13 +20,22 @@ void main()
 	int SquareLength = 0;
 	int SquareArea = 0;
 	int SquarePrim = 0;
+	
+	int TriSide = 0;
+	float TriArea = 0;
+	int TriPrim = 0;
 
 	float CircleRadius = 0;
 	float CirclePrim = 0;
 	float CircleArea = 0;
 
+	int NumOfPolySides = 0;
+	float PolyArea = 0;
+	int PolySide = 0;
+	float PolyPrim = 0;
+
 	
-	//Check to make sure user entered correct value
+	//Get values and check to make sure user entered correct value
 	while (flag == true)
 	{
 
@@ -34,31 +43,42 @@ void main()
 
 		cin >> UserInput;
 
-		if (UserInput <= 0)
+		cout << "Please enter a positive whole number for the number of sides of a polygon: ";
+
+		cin >> NumOfPolySides;
+
+		if (UserInput <= 0 || NumOfPolySides <= 0)
 		{
 			cout << "\nValue entered is negitive or zero." << endl;
 		}
-		else if (UserInput > 0)
+		else if (UserInput > 0 && NumOfPolySides > 0)
 		{
 			flag = false;
 		}
 
 	}
 
+	cout.precision(3);
+
 	//Start calulations for the square
 	SquareLength = UserInput;
-
 	SquareArea = SquareLength * SquareLength;
-
 	SquarePrim = SquareLength * 4;
 
 	
 	//Start calculations for the circle
 	CircleRadius = static_cast<float>(UserInput) / 2;
-
 	CircleArea = PI * (CircleRadius * CircleRadius);
-
 	CirclePrim = (2 * PI) * CircleRadius;
+
+
+	//Start calculations for the triangle
+	TriSide = UserInput;
+	TriArea = pow(TriSide, 2) * (sqrt(3.0) / 4);
+	TriPrim = TriSide * 3;
+
+	//Start calculations for polygon
+	PolySide = UserInput;
 
 
 	//Show calculation values 
@@ -66,10 +86,15 @@ void main()
 	cout << "\tHas a perimeter of " << SquarePrim << endl;
 	cout << "\tAnd a area of " << SquareArea << endl;
 
+	cout << fixed;
 	cout << "\nA circle with a diameter of " << CircleRadius * 2 << endl;
 	cout << "\tHas a radius of " << CircleRadius << endl;
 	cout << "\tHas a perimeter of " << CirclePrim << endl;
 	cout << "\tAnd a area of " << CircleArea << endl;
+
+	cout << "\nA equilateral triangle with a side length of " << TriSide << endl;
+	cout << "\tHas a perimeter of " << TriPrim << endl;
+	cout << "\tAnd a area of " << TriArea << endl;
 
 	//Allow console to stay open
 	cin.get();
