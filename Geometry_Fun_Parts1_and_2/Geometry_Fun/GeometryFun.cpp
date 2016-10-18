@@ -7,13 +7,14 @@ Description: Using a positive value it was given, the code will use that value t
 */
 
 #include <iostream>
+#include <ctgmath>
 using namespace std;
 
 const float PI = 3.14159;
 
 void main()
 {
-	bool flag = true;
+	bool InputIsNegative = true;
 	
 	int UserInput = 0;
 
@@ -36,7 +37,7 @@ void main()
 
 	
 	//Get values and check to make sure user entered correct value
-	while (flag == true)
+	while (InputIsNegative == true)
 	{
 
 		cout << "Please enter a positive whole number: ";
@@ -49,11 +50,11 @@ void main()
 
 		if (UserInput <= 0 || NumOfPolySides <= 0)
 		{
-			cout << "\nValue entered is negitive or zero." << endl;
+			cout << "\nValue entered is negative or zero." << endl;
 		}
 		else if (UserInput > 0 && NumOfPolySides > 0)
 		{
-			flag = false;
+			InputIsNegative = false;
 		}
 
 	}
@@ -79,7 +80,8 @@ void main()
 
 	//Start calculations for polygon
 	PolySide = UserInput;
-
+	PolyArea = (pow(PolySide, 2) * NumOfPolySides) / (4 * (tan((PI / NumOfPolySides))));
+	PolyPrim = NumOfPolySides * PolySide;
 
 	//Show calculation values 
 	cout << "\nA square with a side length of " << SquareLength << endl;
@@ -95,6 +97,10 @@ void main()
 	cout << "\nA equilateral triangle with a side length of " << TriSide << endl;
 	cout << "\tHas a perimeter of " << TriPrim << endl;
 	cout << "\tAnd a area of " << TriArea << endl;
+
+	cout << "\nA "<< NumOfPolySides << " sided polygon with a side length of " << PolySide << endl;
+	cout << "\tHas a perimeter of " << PolyPrim << endl;
+	cout << "\tAnd a area of " << PolyArea << endl;
 
 	//Allow console to stay open
 	cin.get();
