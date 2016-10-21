@@ -1,4 +1,11 @@
 ﻿  GeometryFun.cpp
+<<<<<<< Updated upstream
 d:\demetri van sickle\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(12): warning C4305: 'initializing': truncation from 'double' to 'float'
+=======
+d:\demetri van sickle\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(13): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\demetri van sickle\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(85): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\demetri van sickle\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(90): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\demetri van sickle\documents\github\cs-161\geometry_fun_parts1_and_2\geometry_fun\geometryfun.cpp(91): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+>>>>>>> Stashed changes
   Geometry_Fun.vcxproj -> D:\Demetri Van Sickle\Documents\GitHub\CS-161\Geometry_Fun_Parts1_and_2\Debug\Geometry_Fun.exe
   Geometry_Fun.vcxproj -> D:\Demetri Van Sickle\Documents\GitHub\CS-161\Geometry_Fun_Parts1_and_2\Debug\Geometry_Fun.pdb (Full PDB)
