@@ -25,6 +25,8 @@ End while
 */
 
 #include <iostream>
+#include <iomanip>
+#include <windows.h>
 
 using namespace std;
 
@@ -33,6 +35,9 @@ void main()
 {
 	int Height = 0;
 	int Width = 0;
+	int NumSum = 0;
+
+	float Average = 0;
 
 	cout << "Please enter a Height that is between 3-10: ";
 	cin >> Height;
@@ -41,6 +46,7 @@ void main()
 	cin >> Width;
 	cout << "\n";
 
+	//Make sure the user has entered correct values and prompt for another value if needed
 	while ((Height < 3 || Height > 10) || Height >= Width || (Width <= Height || Width > 20))
 	{
 		if (Height < 3 || Height > 10)
@@ -75,12 +81,53 @@ void main()
 			cout << "unknown error!" << endl;
 	}
 
-	cout << "Thank You"
+	cout << "Thank You" << endl;
 
-	cout << "The integers from "
+	//Find the numbers between the two user given values and display them
+	cout << "\nThe integers from " << Height << " to " << Width << " is:" << endl;
+	cout << "\t";
 
 	for (int i = Height; i <= Width; i++)
 	{
+		cout << " " << i;
 
+		NumSum = NumSum + i;
 	}
+
+	//Display the average of those numbers
+	Average = static_cast<float>(NumSum) / (1 + (Width - Height));
+	cout << "\nand the average of those numbers is: " << Average << "\n\n";
+
+/*	for (int i = 0; i <= Height; i++)
+	{
+		for (int i = 0; i <= Width; i++)
+		{
+			cout << "*";
+		}
+		cout << "\n";
+	} */
+
+
+	for (int i = 0; i <= (Width - 1); i++)
+	{
+		Sleep(200);
+		cout << "*";
+	}
+	
+	cout << "\n";
+
+	for (int i = 0; i <= (Height - 3); i++)
+	{
+		Sleep(200);
+		cout << "*" <<  setw((Width - 1)) << right << "*" << endl;
+	}
+
+	for (int i = 0; i <= (Width - 1); i++)
+	{
+		Sleep(200);
+		cout << "*";
+	}
+
+	cout << "\n";
+
 }
