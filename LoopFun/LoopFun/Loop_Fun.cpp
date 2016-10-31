@@ -36,6 +36,7 @@ void main()
 	int Height = 0;
 	int Width = 0;
 	int NumSum = 0;
+	int NumOfDots = 1;
 
 	float Average = 0;
 
@@ -60,7 +61,7 @@ void main()
 
 		if (Height >= Width)
 		{
-			cout << "Height can't be greater than the width!" << endl;
+			cout << "Height can't be greater than OR equal to the width!" << endl;
 			cout << "Please enter a Width that is greater than the Height(" << Height << "), but less than 20: ";
 			cin >> Width;
 			cout << "\n";
@@ -75,10 +76,6 @@ void main()
 			cout << "\n";
 			continue;
 		}
-
-		//For deguging purposes 
-		else
-			cout << "unknown error!" << endl;
 	}
 
 	cout << "Thank You" << endl;
@@ -98,19 +95,10 @@ void main()
 	Average = static_cast<float>(NumSum) / (1 + (Width - Height));
 	cout << "\nand the average of those numbers is: " << Average << "\n\n";
 
-/*	for (int i = 0; i <= Height; i++)
-	{
-		for (int i = 0; i <= Width; i++)
-		{
-			cout << "*";
-		}
-		cout << "\n";
-	} */
-
-
+	//Draw Square
 	for (int i = 0; i <= (Width - 1); i++)
 	{
-		Sleep(200);
+		Sleep(100);
 		cout << "*";
 	}
 	
@@ -118,16 +106,29 @@ void main()
 
 	for (int i = 0; i <= (Height - 3); i++)
 	{
-		Sleep(200);
+		Sleep(100);
 		cout << "*" <<  setw((Width - 1)) << right << "*" << endl;
 	}
 
 	for (int i = 0; i <= (Width - 1); i++)
 	{
-		Sleep(200);
+		Sleep(100);
 		cout << "*";
 	}
 
-	cout << "\n";
+	cout << "\n\n";
 
+	//Draw triangle
+	cout << "*" << endl;
+	for (int i = 0; i <= (Height - 1); i++)
+	{
+		for (int i = 0; i <= NumOfDots; i++)
+		{
+			Sleep(50);
+			cout << "*";
+		}
+
+		NumOfDots += 2;
+		cout << "\n";
+	}
 }
