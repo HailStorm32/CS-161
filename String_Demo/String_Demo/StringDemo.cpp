@@ -15,7 +15,7 @@ using namespace std;
 //CString prototypes
 void getNameAndComp(char userName[], int size);
 void removeVowels(const char nameWithV[], char nameWithOutV[]);
-void printCString(const char cString, int size);
+void printCString(const char cString[], int size);
 
 //String prototypes
 string getNameAndComp();
@@ -26,17 +26,26 @@ void printString(string string);
 void cStringDemo();
 void stringTypeDemo();
 
-const int ARRAY_SIZE = 18;
-const char MY_NAME[ARRAY_SIZE] = "Demetri VanSickle";
-const string MY_NAME = "Demetri VanSickle";
+//CString Constants
+const int MY_NAME_SIZE = 19;
+const int MAX_GUSESS_SIZE = 30;
+const int TITLE_SIZE = 18;
+const char MY_NAME_CSTR[MY_NAME_SIZE] = "Demetri Van Sickle";
+const char VOWELS_C[6] = { 'a', 'e', 'i', 'o', 'u', 'y' };
+const char TITLE_C[TITLE_SIZE] = " the Barbarian";
+
+//String Constants
+const string MY_NAME_STR = "Demetri Van Sickle";
+const string VOWELS_S = "aeiouy";
+const string TITLE_S = " the Barbarian";
 
 void main()
 {
-	//char noVowels[ARRAY_SIZE] = "";
-	string noVowels = "";
+	cout << "****************** CString Demo **************************\n\n" << endl;
+	cStringDemo();
 
-
-
+	cout << "****************** String Demo **************************\n\n" << endl;
+	stringTypeDemo();
 }
 
 //\\\\\\\\\\\\\\\\\\\\\\\\\CSTRING FUNCTIONS///////////////////////////
@@ -56,15 +65,15 @@ void getNameAndComp(char userName[], int size)
 {
 	cout << "Please guess my name (First & Last):";
 
-	cin.get(userName, ARRAY_SIZE);
+	cin.get(userName, MY_NAME_SIZE);
 
-	if (strcmp(userName, MY_NAME))
+	if (!(strcmp(userName, MY_NAME_CSTR)))
 	{
 		cout << "\nYou guessed it!" << endl;
 	}
 	else
 	{
-		cout << "Nice try, but incorrect" << endl;
+		cout << "\nNice try, but incorrect" << endl;
 	}
 }
 
@@ -80,7 +89,26 @@ void getNameAndComp(char userName[], int size)
 //=====================================================================
 void removeVowels(const char nameWithV[], char nameWithOutV[])
 {
+	char currentCompareChar;
+	int index = 0;
 
+	for (int pass = 0; pass < MAX_GUSESS_SIZE; pass++)
+	{
+		currentCompareChar = nameWithV[pass];
+		
+		for (int i = 0; i < 6; i++)
+		{
+			if (tolower(currentCompareChar) == VOWELS_C[i])
+			{
+				break;
+			}
+			else if (i == 5)
+			{
+				nameWithOutV[index] = currentCompareChar;
+				index++;
+			}
+		}
+	}
 }
 
 //=====================================================================
@@ -93,9 +121,13 @@ void removeVowels(const char nameWithV[], char nameWithOutV[])
 // Return Arguments:
 //		VOID
 //=====================================================================
-void printCString(const char cString, int size)
+void printCString(const char cString[], int size)
 {
-
+	for (int i = 0; i < size; i++)
+	{
+		cout << cString[i];
+	}
+	cout << "\n";
 }
 
 
@@ -112,7 +144,22 @@ void printCString(const char cString, int size)
 //=======================================================================
 string getNameAndComp()
 {
+	string userName;
+	
+	cout << "Please guess my name (First & Last):";
 
+	getline(cin, userName);
+
+	if (userName == MY_NAME_STR)
+	{
+		cout << "\nYou guessed it!" << endl;
+	}
+	else
+	{
+		cout << "\nNice try, but incorrect" << endl;
+	}
+
+	return userName;
 }
 
 //=======================================================================
@@ -126,7 +173,29 @@ string getNameAndComp()
 //=======================================================================
 string removeVowels(string nameWithV)
 {
+	char currentCompareChar;
+	string nameWithOutV = "";
+	int index = 0;
 
+	for (int pass = 0; pass < sizeof(nameWithV); pass++) //
+	{
+		currentCompareChar = nameWithV[pass];
+
+		for (int i = 0; i < 5; i++)
+		{
+			if (tolower(currentCompareChar) == VOWELS_S[i])
+			{
+				break;
+			}
+			else if (i == 5)
+			{
+				nameWithOutV[index] = currentCompareChar;
+				index++;
+			}
+		}
+	}
+
+	return nameWithOutV;
 }
 
 //========================================================================
@@ -138,9 +207,9 @@ string removeVowels(string nameWithV)
 // Return Value:
 //		VOID
 //========================================================================
-void printString(string string)
+void printString(string string)  
 {
-
+	cout << string << endl;  //I know this function is pointless, but it makes both types of functions (cStringDemo & stringTypeDemo) more symmetric
 }
 
 
@@ -157,10 +226,26 @@ void printString(string string)
 //=========================================================================
 void cStringDemo()
 {
-	char userName[ARRAY_SIZE] = "";
-	char noVowels[ARRAY_SIZE] = "";
+	char userName[MAX_GUSESS_SIZE] = "";
+	char noVowels[MY_NAME_SIZE] = "";
+	char nameAndTitle[MY_NAME_SIZE + TITLE_SIZE] = "";
 
-	getNameAndComp()
+	getNameAndComp(userName, MY_NAME_SIZE);
+
+	cout << "\nYou Entered: ";
+	printCString(userName, MAX_GUSESS_SIZE);
+
+	removeVowels(userName, noVowels);
+	
+	cout << "\nWith no vowels thats: ";
+	printCString(noVowels, MY_NAME_SIZE);
+
+	cout << "\nBack in the day that name would have been: ";
+
+	strcpy(nameAndTitle, userName);
+	strcat(nameAndTitle, TITLE_C);
+
+	printCString(nameAndTitle, TITLE_SIZE + MY_NAME_SIZE);
 }
 
 //========================================================================
@@ -174,5 +259,22 @@ void cStringDemo()
 //=========================================================================
 void stringTypeDemo()
 {
+	string userName = "";
+	string noVowels = "";
+	string nameAndTitle = "";
 
+	userName = getNameAndComp();
+
+	cout << "\nYou Entered: ";
+	printString(userName);
+
+	noVowels = removeVowels(userName);
+
+	cout << "\nWith no vowels thats: " << noVowels << endl;
+
+	cout << "\nBack in the day that name would have been: ";
+
+	nameAndTitle = userName + TITLE_S;
+
+	printString(userName);
 }
