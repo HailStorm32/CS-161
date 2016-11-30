@@ -177,7 +177,7 @@ string removeVowels(string nameWithV)
 	string nameWithOutV = "";
 	int index = 0;
 
-	for (int pass = 0; pass < sizeof(nameWithV); pass++) //
+	for (int pass = 0; pass < nameWithV.length(); pass++) //
 	{
 		currentCompareChar = nameWithV[pass];
 
@@ -189,7 +189,7 @@ string removeVowels(string nameWithV)
 			}
 			else if (i == 5)
 			{
-				nameWithOutV[index] = currentCompareChar;
+				nameWithOutV[index] += currentCompareChar;
 				index++;
 			}
 		}
@@ -227,7 +227,7 @@ void printString(string string)
 void cStringDemo()
 {
 	char userName[MAX_GUSESS_SIZE] = "";
-	char noVowels[MY_NAME_SIZE] = "";
+	char noVowels[MAX_GUSESS_SIZE] = "";
 	char nameAndTitle[MY_NAME_SIZE + TITLE_SIZE] = "";
 
 	getNameAndComp(userName, MY_NAME_SIZE);
