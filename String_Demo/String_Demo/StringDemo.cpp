@@ -14,13 +14,11 @@ using namespace std;
 
 //CString prototypes
 void getNameAndComp(char userName[], int size);
-void removeVowels(const char nameWithV[], char nameWithOutV[]);
-void printCString(const char cString[], int size);
+void removeVowels(const char nameWithVowels[], char nameWithOutVowels[]);
 
 //String prototypes
 string getNameAndComp();
-string removeVowels(string nameWithV);
-void printString(string string);
+string removeVowels(string nameWithVowels);
 
 //Main Prototypes
 void cStringDemo();
@@ -28,7 +26,7 @@ void stringTypeDemo();
 
 //CString Constants
 const int MY_NAME_SIZE = 19;
-const int MAX_GUSESS_SIZE = 30;
+const int MAX_GUESS_SIZE = 30;
 const int TITLE_SIZE = 18;
 const char MY_NAME_CSTR[MY_NAME_SIZE] = "Demetri Van Sickle";
 const char VOWELS_C[6] = { 'a', 'e', 'i', 'o', 'u', 'y' };
@@ -39,6 +37,7 @@ const string MY_NAME_STR = "Demetri Van Sickle";
 const string VOWELS_S = "aeiouy";
 const string TITLE_S = " the Barbarian";
 
+
 void main()
 {
 	cout << "****************** CString Demo **************************\n\n" << endl;
@@ -47,6 +46,7 @@ void main()
 	cout << "****************** String Demo **************************\n\n" << endl;
 	stringTypeDemo();
 }
+
 
 //\\\\\\\\\\\\\\\\\\\\\\\\\CSTRING FUNCTIONS///////////////////////////
 
@@ -82,19 +82,19 @@ void getNameAndComp(char userName[], int size)
 // Description: Remove vowels from given CString
 // 
 // Arguments:
-//		nameWithV (I) -- name with the vowels (original name)
-//		nameWithOutV (O) -- name with out the vowels
+//		nameWithVowels (I) -- name with the vowels (original name)
+//		nameWithOutVowels (O) -- name with out the vowels
 // Return Arguments:
 //		VOID
 //=====================================================================
-void removeVowels(const char nameWithV[], char nameWithOutV[])
+void removeVowels(const char nameWithVowels[], char nameWithOutVowels[])
 {
 	char currentCompareChar;
 	int index = 0;
 
-	for (int pass = 0; pass < MAX_GUSESS_SIZE; pass++)
+	for (int pass = 0; pass < strlen(nameWithVowels); pass++)
 	{
-		currentCompareChar = nameWithV[pass];
+		currentCompareChar = nameWithVowels[pass];
 		
 		for (int i = 0; i < 6; i++)
 		{
@@ -104,30 +104,11 @@ void removeVowels(const char nameWithV[], char nameWithOutV[])
 			}
 			else if (i == 5)
 			{
-				nameWithOutV[index] = currentCompareChar;
+				nameWithOutVowels[index] = currentCompareChar;
 				index++;
 			}
 		}
 	}
-}
-
-//=====================================================================
-// Function: printCString
-// Description: Function that will print the a given cString
-// 
-// Arguments:
-//		userName (I) -- cString to be printed
-//		size (I) -- size of given cString
-// Return Arguments:
-//		VOID
-//=====================================================================
-void printCString(const char cString[], int size)
-{
-	for (int i = 0; i < size; i++)
-	{
-		cout << cString[i];
-	}
-	cout << "\n";
 }
 
 
@@ -167,21 +148,21 @@ string getNameAndComp()
 // Description: Remove vowels from given String
 // 
 // Arguments:
-//		nameWithV (I) -- name with the vowels (original name)
+//		nameWithVowels (I) -- name with the vowels (original name)
 // Return Values:
-//		nameWithOutV -- name with out the vowels
+//		nameWithOutVowels -- name with out the vowels
 //=======================================================================
-string removeVowels(string nameWithV)
+string removeVowels(string nameWithVowels)
 {
 	char currentCompareChar;
-	string nameWithOutV = "";
+	string nameWithOutVowels = "";
 	int index = 0;
 
-	for (int pass = 0; pass < nameWithV.length(); pass++) //
+	for (int pass = 0; pass < nameWithVowels.length(); pass++) 
 	{
-		currentCompareChar = nameWithV[pass];
+		currentCompareChar = nameWithVowels[pass];
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 6; i++)
 		{
 			if (tolower(currentCompareChar) == VOWELS_S[i])
 			{
@@ -189,27 +170,12 @@ string removeVowels(string nameWithV)
 			}
 			else if (i == 5)
 			{
-				nameWithOutV[index] += currentCompareChar;
+				nameWithOutVowels += currentCompareChar;
 				index++;
 			}
 		}
 	}
-
-	return nameWithOutV;
-}
-
-//========================================================================
-// Function: printString
-// Description: Function that will print given String
-//
-// Arguments:
-//		string -- string that will be printed
-// Return Value:
-//		VOID
-//========================================================================
-void printString(string string)  
-{
-	cout << string << endl;  //I know this function is pointless, but it makes both types of functions (cStringDemo & stringTypeDemo) more symmetric
+	return nameWithOutVowels;
 }
 
 
@@ -226,26 +192,24 @@ void printString(string string)
 //=========================================================================
 void cStringDemo()
 {
-	char userName[MAX_GUSESS_SIZE] = "";
-	char noVowels[MAX_GUSESS_SIZE] = "";
+	char userName[MAX_GUESS_SIZE] = "";
+	char noVowels[MAX_GUESS_SIZE] = "";
 	char nameAndTitle[MY_NAME_SIZE + TITLE_SIZE] = "";
 
 	getNameAndComp(userName, MY_NAME_SIZE);
 
-	cout << "\nYou Entered: ";
-	printCString(userName, MAX_GUSESS_SIZE);
+	cout << "\nYou Entered: " << userName << endl;
 
 	removeVowels(userName, noVowels);
 	
-	cout << "\nWith no vowels thats: ";
-	printCString(noVowels, MY_NAME_SIZE);
+	cout << "\nWith no vowels thats: " << noVowels << endl;
 
 	cout << "\nBack in the day that name would have been: ";
 
 	strcpy(nameAndTitle, userName);
 	strcat(nameAndTitle, TITLE_C);
 
-	printCString(nameAndTitle, TITLE_SIZE + MY_NAME_SIZE);
+	cout << nameAndTitle << endl;
 }
 
 //========================================================================
@@ -263,10 +227,11 @@ void stringTypeDemo()
 	string noVowels = "";
 	string nameAndTitle = "";
 
+	cin.ignore(1); //Clear the buffer
+
 	userName = getNameAndComp();
 
-	cout << "\nYou Entered: ";
-	printString(userName);
+	cout << "\nYou Entered: " << userName << endl;
 
 	noVowels = removeVowels(userName);
 
@@ -276,5 +241,5 @@ void stringTypeDemo()
 
 	nameAndTitle = userName + TITLE_S;
 
-	printString(userName);
+	cout << nameAndTitle << endl;
 }
